@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(@Nullable Context context) {
         super(context,DATABASE_NAME, null, 1);
 
-        // created a constructor  for created the database
+        // created a object  for created the database
         SQLiteDatabase db = this.getWritableDatabase();
     }
 
@@ -34,7 +34,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(sqLiteDatabase);
 
     }
 }
