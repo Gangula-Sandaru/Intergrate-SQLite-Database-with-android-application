@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.internal.TouchObserverFrameLayout;
+
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper myDb;
@@ -103,5 +105,21 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
 
 
+    }
+
+
+    public void updateData(){
+        updateData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isUpdate = myDb.updateData(editUpdateMarks.getText().toString(),editName.getText().toString(), editCourse.toString(), editMarks.toString());
+                if(isUpdate){
+                    Toast.makeText(MainActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(MainActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

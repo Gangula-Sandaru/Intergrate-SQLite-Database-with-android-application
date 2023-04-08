@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.net.ConnectException;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "students.db";
@@ -62,5 +64,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor result = db.rawQuery("select * from " + TABLE_NAME , null);
         return result;
 
+    }
+
+    public boolean updateData(String id, String name, String course, String marks){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, id);
+        contentValues.put(COL_2, name);
+        contentValues.put(COL_3, course);
+        contentValues.put(COL_4, marks);
+        db.update(TABLE_NAME, contentValues, "id = ? ", new String[] {id});
+        return  true;
     }
 }
