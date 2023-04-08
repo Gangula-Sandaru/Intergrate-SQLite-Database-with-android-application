@@ -33,9 +33,14 @@ public class MainActivity extends AppCompatActivity {
         updateData = findViewById(R.id.updateData);
         deleteDta = findViewById(R.id.deleteData);
 
+        // calling for the addData function.
+        addData();
 
-        // set on click lister to the insert data
+    }
 
+
+    // set on click lister to the insert data
+    public void addData(){
         addData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +53,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }
