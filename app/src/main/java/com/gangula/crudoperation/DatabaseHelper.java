@@ -1,5 +1,6 @@
 package com.gangula.crudoperation;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -37,5 +38,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(sqLiteDatabase);
 
+    }
+
+    public boolean insertData(String name, String course, String marks){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2, name);
+        contentValues.put(COL_3, course);
+        contentValues.put(COL_4, marks);
+
+        long result  = db.insert(TABLE_NAME, null, contentValues);
+        if(result == -1){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
