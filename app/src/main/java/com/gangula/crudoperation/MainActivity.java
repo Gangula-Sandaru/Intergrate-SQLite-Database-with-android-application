@@ -3,6 +3,7 @@ package com.gangula.crudoperation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // calling for the addData function.
         addData();
 
+
     }
 
 
@@ -46,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 boolean inserted = myDb.insertData(editName.getText().toString(), editCourse.toString(), editMarks.toString());
+
+                // get some output to the screen
+                Log.i("Data",editName.getText().toString() +""+ editCourse.toString()+""+ editMarks.toString());
+
                 if (inserted){
                     Toast.makeText(MainActivity.this, "Data Inserted",Toast.LENGTH_SHORT).show();
                 }else{

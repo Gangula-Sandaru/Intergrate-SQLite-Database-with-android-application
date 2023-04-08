@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_1 = "ID";
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "COURSE";
-    public static final String COL_4 = "MARKS";
+    public static final String COL_4 = "MARK";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context,DATABASE_NAME, null, 1);
@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         // SQL query for the database
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(ID INTEGER primary key autoincrement, " + "NAME TEXT, COURSE TEXT, MARKES INTERGER)");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(ID INTEGER primary key autoincrement, " + "NAME TEXT, COURSE TEXT, MARK INTERGER)");
     }
 
     @Override
