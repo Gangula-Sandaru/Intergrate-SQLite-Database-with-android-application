@@ -43,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
         deleteDta = findViewById(R.id.deleteData);
 
         // calling for the addData function.
-//        addData();
+        addData();
         viewData();
+        updateData();
+        deleteData();
 
 
 
@@ -120,6 +122,21 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
                 }
             }
+        });
+    }
+
+    public void deleteData(){
+        deleteDta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer deleteData = myDb.deleteData(editUpdateMarks.getText().toString());
+                if(deleteData > 0){
+                    Toast.makeText(MainActivity.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Data not Deleted", Toast.LENGTH_SHORT).show();
+                }
+            }
+
         });
     }
 }
