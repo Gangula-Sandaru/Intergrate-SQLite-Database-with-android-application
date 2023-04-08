@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "students.db";
@@ -18,15 +20,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(@Nullable Context context) {
         super(context,DATABASE_NAME, null, 1);
 
+        // created a constructor  for created the database
+        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        // SQL query for the database
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(ID INTEGER primary key autoincrement, " + "NAME TEXT, COURSE TEXT, MARKES INTERGER)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+
 
     }
 }
