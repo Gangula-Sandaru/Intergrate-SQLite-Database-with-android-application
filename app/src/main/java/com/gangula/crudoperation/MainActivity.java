@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.internal.TouchObserverFrameLayout;
+
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper myDb;
@@ -41,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
         deleteDta = findViewById(R.id.deleteData);
 
         // calling for the addData function.
-//        addData();
+        addData();
         viewData();
+        updateData();
+        deleteData();
 
 
 
@@ -103,5 +107,36 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
 
 
+    }
+
+
+    public void updateData(){
+        updateData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isUpdate = myDb.updateData(editUpdateMarks.getText().toString(),editName.getText().toString(), editCourse.toString(), editMarks.toString());
+                if(isUpdate){
+                    Toast.makeText(MainActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(MainActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void deleteData(){
+        deleteDta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer deleteData = myDb.deleteData(editUpdateMarks.getText().toString());
+                if(deleteData > 0){
+                    Toast.makeText(MainActivity.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Data not Deleted", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
     }
 }
