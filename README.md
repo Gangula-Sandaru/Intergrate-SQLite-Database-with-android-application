@@ -2,4 +2,4 @@
 SQLite database integration and create a CRUD operation Android application.
 
 
-This piece of code shows that, how to intergrate SQlite database
+This piece of code shows that, how to intergrate SQlite database with android studio.
